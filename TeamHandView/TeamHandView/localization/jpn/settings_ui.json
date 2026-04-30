@@ -1,0 +1,11 @@
+{
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.GROUP.preview": "手札プレビュー",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.enabled.NAME": "手札プレビューを有効化",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.enabled.DESCRIPTION": "マウスオーバーまたはコントローラーで選択している他プレイヤーの現在の手札を表示します。",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.NAME": "カード表示倍率",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.DESCRIPTION": "プレビュー内で表示されるカードの大きさを調整します。",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.NAME": "1行あたりの最大カード数",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.DESCRIPTION": "プレビューが折り返す前に1行へ表示するカード数を調整します。",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.NAME": "手札プレビューのロック/解除",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.DESCRIPTION": "現在表示中の他プレイヤーの手札プレビューをロック、または解除します。既定はキーボードが Ctrl+H、コントローラーが左スティック押し込みです。"
+}

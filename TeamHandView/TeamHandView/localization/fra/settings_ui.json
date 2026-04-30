@@ -1,0 +1,11 @@
+{
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.GROUP.preview": "Aperçu de la main",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.enabled.NAME": "Activer l'aperçu de la main",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.enabled.DESCRIPTION": "Affiche la main actuelle d'un autre joueur lorsque vous le survolez ou le sélectionnez à la manette.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.NAME": "Taille des cartes",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.DESCRIPTION": "Contrôle la taille des cartes dans l'aperçu.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.NAME": "Cartes max. par ligne",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.DESCRIPTION": "Contrôle combien de cartes sont affichées avant que l'aperçu passe à la ligne.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.NAME": "Verrouiller/déverrouiller l'aperçu",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.DESCRIPTION": "Verrouille l'aperçu de main actuellement affiché, ou le déverrouille. Par défaut : Ctrl+H au clavier et clic sur le stick gauche à la manette."
+}

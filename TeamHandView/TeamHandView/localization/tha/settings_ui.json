@@ -1,0 +1,11 @@
+{
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.GROUP.preview": "ตัวอย่างไพ่ในมือ",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.enabled.NAME": "เปิดใช้ตัวอย่างไพ่ในมือ",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.enabled.DESCRIPTION": "แสดงไพ่ในมือปัจจุบันของผู้เล่นคนอื่นเมื่อวางเมาส์เหนือหรือเลือกด้วยคอนโทรลเลอร์",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.NAME": "ขนาดการ์ด",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.DESCRIPTION": "กำหนดขนาดของการ์ดในตัวอย่าง",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.NAME": "การ์ดสูงสุดต่อแถว",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.DESCRIPTION": "กำหนดจำนวนการ์ดที่จะแสดงก่อนขึ้นแถวใหม่ในตัวอย่าง",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.NAME": "ล็อก/ปลดล็อกตัวอย่างไพ่ในมือ",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.DESCRIPTION": "ล็อกตัวอย่างไพ่ในมือของผู้เล่นคนอื่นที่กำลังแสดงอยู่ หรือปลดล็อก ค่าเริ่มต้น: Ctrl+H บนคีย์บอร์ด และกดสติกซ้ายบนคอนโทรลเลอร์"
+}

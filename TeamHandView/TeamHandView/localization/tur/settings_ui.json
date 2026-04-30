@@ -1,0 +1,11 @@
+{
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.GROUP.preview": "El önizlemesi",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.enabled.NAME": "El önizlemesini etkinleştir",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.enabled.DESCRIPTION": "Fareyle üzerine geldiğinizde veya kontrolcüyle seçtiğinizde başka bir oyuncunun mevcut elini gösterir.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.NAME": "Kart ölçeği",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.DESCRIPTION": "Önizlemede kartların ne kadar büyük görüneceğini ayarlar.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.NAME": "Satır başına en fazla kart",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.DESCRIPTION": "Önizleme yeni satıra geçmeden önce bir satırda kaç kart gösterileceğini ayarlar.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.NAME": "El önizlemesini kilitle/aç",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.DESCRIPTION": "Şu anda gösterilen başka oyuncu el önizlemesini kilitler veya kilidini açar. Varsayılan: klavyede Ctrl+H ve kontrolcüde sol çubuğa basma."
+}

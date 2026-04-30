@@ -1,0 +1,11 @@
+{
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.GROUP.preview": "손패 미리보기",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.enabled.NAME": "손패 미리보기 사용",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.enabled.DESCRIPTION": "마우스를 올리거나 컨트롤러로 선택한 다른 플레이어의 현재 손패를 표시합니다.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.NAME": "카드 크기",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.DESCRIPTION": "미리보기에서 카드가 표시되는 크기를 조절합니다.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.NAME": "행당 최대 카드 수",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.DESCRIPTION": "미리보기가 다음 행으로 넘어가기 전에 한 행에 표시할 카드 수를 조절합니다.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.NAME": "손패 미리보기 잠금/해제",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.DESCRIPTION": "현재 표시 중인 다른 플레이어의 손패 미리보기를 잠그거나 해제합니다. 기본값은 키보드 Ctrl+H, 컨트롤러 왼쪽 스틱 누르기입니다."
+}

@@ -1,0 +1,11 @@
+{
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.GROUP.preview": "Anteprima mano",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.enabled.NAME": "Attiva anteprima mano",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.enabled.DESCRIPTION": "Mostra la mano attuale di un altro giocatore quando ci passi sopra con il mouse o lo selezioni con il controller.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.NAME": "Scala carte",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.DESCRIPTION": "Controlla quanto grandi appaiono le carte nell'anteprima.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.NAME": "Carte max per riga",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.DESCRIPTION": "Controlla quante carte vengono mostrate prima che l'anteprima vada a capo.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.NAME": "Blocca/sblocca anteprima mano",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.DESCRIPTION": "Blocca l'anteprima mano attualmente mostrata o la sblocca. Predefinito: Ctrl+H su tastiera e pressione dello stick sinistro sul controller."
+}

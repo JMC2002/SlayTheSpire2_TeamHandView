@@ -1,0 +1,11 @@
+{
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.GROUP.preview": "Prévia da mão",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.enabled.NAME": "Ativar prévia da mão",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.enabled.DESCRIPTION": "Mostra a mão atual de outro jogador ao passar o mouse ou selecioná-lo com o controle.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.NAME": "Escala das cartas",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.DESCRIPTION": "Controla o tamanho das cartas na prévia.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.NAME": "Máx. de cartas por linha",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.DESCRIPTION": "Controla quantas cartas são mostradas antes de a prévia quebrar para uma nova linha.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.NAME": "Bloquear/desbloquear prévia da mão",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.DESCRIPTION": "Bloqueia a prévia de mão exibida no momento ou a desbloqueia. Padrão: Ctrl+H no teclado e pressionar o analógico esquerdo no controle."
+}

@@ -1,0 +1,11 @@
+{
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.GROUP.preview": "Предпросмотр руки",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.enabled.NAME": "Включить предпросмотр руки",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.enabled.DESCRIPTION": "Показывает текущую руку другого игрока при наведении курсора или выборе контроллером.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.NAME": "Масштаб карт",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.DESCRIPTION": "Настраивает размер карт в предпросмотре.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.NAME": "Макс. карт в строке",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.DESCRIPTION": "Настраивает, сколько карт показывать до переноса предпросмотра на новую строку.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.NAME": "Закрепить/открепить предпросмотр",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.DESCRIPTION": "Закрепляет текущий предпросмотр руки другого игрока или снимает закрепление. По умолчанию: Ctrl+H на клавиатуре и нажатие левого стика на контроллере."
+}

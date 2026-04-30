@@ -1,0 +1,11 @@
+{
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.GROUP.preview": "Handvorschau",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.enabled.NAME": "Handvorschau aktivieren",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.enabled.DESCRIPTION": "Zeigt die aktuelle Hand eines anderen Spielers an, wenn du ihn mit der Maus berührst oder mit dem Controller auswählst.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.NAME": "Kartengröße",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.DESCRIPTION": "Legt fest, wie groß Karten in der Vorschau angezeigt werden.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.NAME": "Max. Karten pro Reihe",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.DESCRIPTION": "Legt fest, wie viele Karten pro Reihe angezeigt werden, bevor die Vorschau umbricht.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.NAME": "Handvorschau sperren/entsperren",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.DESCRIPTION": "Sperrt die aktuell eingeblendete Handvorschau eines anderen Spielers oder entsperrt sie. Standard: Strg+H auf der Tastatur und linker Stick drücken auf dem Controller."
+}

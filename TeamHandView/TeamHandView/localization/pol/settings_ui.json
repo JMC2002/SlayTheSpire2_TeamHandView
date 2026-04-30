@@ -1,0 +1,11 @@
+{
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.GROUP.preview": "Podgląd ręki",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.enabled.NAME": "Włącz podgląd ręki",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.enabled.DESCRIPTION": "Pokazuje bieżącą rękę innego gracza po najechaniu kursorem lub wybraniu go kontrolerem.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.NAME": "Skala kart",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.DESCRIPTION": "Określa, jak duże są karty w podglądzie.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.NAME": "Maks. kart w rzędzie",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.DESCRIPTION": "Określa, ile kart jest wyświetlanych, zanim podgląd przejdzie do nowego rzędu.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.NAME": "Zablokuj/odblokuj podgląd ręki",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.DESCRIPTION": "Blokuje aktualnie wyświetlany podgląd ręki innego gracza albo go odblokowuje. Domyślnie: Ctrl+H na klawiaturze i wciśnięcie lewego drążka na kontrolerze."
+}
