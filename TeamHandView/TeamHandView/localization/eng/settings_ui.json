@@ -5,5 +5,7 @@
     "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.NAME": "Card scale",
     "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.DESCRIPTION": "Controls how large cards appear in the hover preview.",
     "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.NAME": "Max cards per row",
-    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.DESCRIPTION": "Controls how many cards are shown before the preview wraps to a new row."
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.DESCRIPTION": "Controls how many cards are shown before the preview wraps to a new row.",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.NAME": "Lock/unlock hand preview",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.DESCRIPTION": "Lock the currently hovered remote hand preview, or unlock it."
 }

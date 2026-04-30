@@ -19,15 +19,23 @@ internal static class RemoteHandPreviewController
     private const int PreviewZIndex = 2_000;
 
     private static readonly Dictionary<ulong, Control> PreviewRoots = [];
+    private static ulong? HoveredNetId;
+    private static ulong? LockedNetId;
 
     public static void UpdateVisibility(NMultiplayerPlayerState playerState, bool isHighlighted)
     {
         try
         {
             if (isHighlighted)
+            {
+                HoveredNetId = playerState.Player?.NetId;
                 ShowOrRefresh(playerState);
+            }
             else
-                Hide(playerState);
+            {
+                ClearHovered(playerState);
+                HideIfUnlocked(playerState);
+            }
         }
         catch (Exception ex)
         {
@@ -50,6 +58,42 @@ internal static class RemoteHandPreviewController
         }
     }
 
+    public static void TogglePreviewLock()
+    {
+        try
+        {
+            if (!TeamHandViewSettings.Enabled)
+            {
+                UnlockCurrentPreview(hideLockedPreview: true);
+                return;
+            }
+
+            if (TryGetVisibleHoveredNetId(out ulong hoveredNetId))
+            {
+                if (LockedNetId == hoveredNetId)
+                {
+                    LockedNetId = null;
+                    ModLogger.Info($"{VersionInfo.Tag} Remote hand preview unlocked.");
+                    return;
+                }
+
+                if (LockedNetId is { } previouslyLockedNetId && previouslyLockedNetId != hoveredNetId)
+                    Hide(previouslyLockedNetId);
+
+                LockedNetId = hoveredNetId;
+                ModLogger.Info($"{VersionInfo.Tag} Remote hand preview locked.");
+                return;
+            }
+
+            UnlockCurrentPreview(hideLockedPreview: true);
+        }
+        catch (Exception ex)
+        {
+            ModLogger.Warn($"{VersionInfo.Tag} Failed to toggle remote hand preview lock: {ex}");
+            UnlockCurrentPreview(hideLockedPreview: true);
+        }
+    }
+
     public static void Hide(NMultiplayerPlayerState playerState)
     {
         if (playerState.Player is null)
@@ -60,6 +104,12 @@ internal static class RemoteHandPreviewController
 
     private static void Hide(ulong netId)
     {
+        if (HoveredNetId == netId)
+            HoveredNetId = null;
+
+        if (LockedNetId == netId)
+            LockedNetId = null;
+
         if (!PreviewRoots.Remove(netId, out Control? root))
             return;
 
@@ -188,5 +238,52 @@ internal static class RemoteHandPreviewController
         position.Y = Mathf.Clamp(position.Y, EdgePadding, Math.Max(EdgePadding, viewportSize.Y - previewSize.Y - EdgePadding));
 
         root.GlobalPosition = position;
+    }
+
+    private static void HideIfUnlocked(NMultiplayerPlayerState playerState)
+    {
+        if (playerState.Player is null)
+            return;
+
+        ulong netId = playerState.Player.NetId;
+        if (LockedNetId == netId)
+            return;
+
+        Hide(netId);
+    }
+
+    private static void ClearHovered(NMultiplayerPlayerState playerState)
+    {
+        if (playerState.Player is null)
+            return;
+
+        if (HoveredNetId == playerState.Player.NetId)
+            HoveredNetId = null;
+    }
+
+    private static bool TryGetVisibleHoveredNetId(out ulong netId)
+    {
+        if (HoveredNetId is { } hoveredNetId
+            && PreviewRoots.TryGetValue(hoveredNetId, out Control? root)
+            && GodotObject.IsInstanceValid(root))
+        {
+            netId = hoveredNetId;
+            return true;
+        }
+
+        netId = default;
+        return false;
+    }
+
+    private static void UnlockCurrentPreview(bool hideLockedPreview)
+    {
+        if (LockedNetId is not { } lockedNetId)
+            return;
+
+        LockedNetId = null;
+        if (hideLockedPreview)
+            Hide(lockedNetId);
+
+        ModLogger.Info($"{VersionInfo.Tag} Remote hand preview unlocked.");
     }
 }

@@ -5,5 +5,7 @@
     "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.NAME": "卡牌缩放",
     "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.DESCRIPTION": "控制悬停预览里卡牌的显示大小。",
     "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.NAME": "每行最大卡牌数",
-    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.DESCRIPTION": "控制悬停预览自动换行前每行最多显示几张卡。"
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.DESCRIPTION": "控制悬停预览自动换行前每行最多显示几张卡。",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.NAME": "锁定/解锁手牌预览",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.DESCRIPTION": "锁定当前悬停显示的其他玩家手牌预览，或解除锁定。"
 }

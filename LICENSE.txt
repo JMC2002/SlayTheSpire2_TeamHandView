@@ -1,4 +1,4 @@
-JMC Mod License
+	
 
 Copyright (c) 2026 JMC. All rights reserved.
 

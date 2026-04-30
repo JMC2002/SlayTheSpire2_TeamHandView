@@ -1,3 +1,4 @@
+using Godot;
 using JmcModLib.Config;
 using JmcModLib.Config.UI;
 
@@ -33,4 +34,19 @@ public static class TeamHandViewSettings
         Key = "max_columns",
         Order = 30)]
     public static int MaxColumns = 5;
+
+    [UIHotkey(
+        "Toggle preview lock",
+        PreviewGroup,
+        Key = "toggle_preview_lock",
+        Description = "Lock or unlock the currently hovered remote hand preview.",
+        DefaultKeyboard = Key.H,
+        DefaultModifiers = JmcKeyModifiers.Ctrl,
+        AllowController = true,
+        ConsumeInput = true,
+        Order = 40)]
+    public static void TogglePreviewLock()
+    {
+        RemoteHandPreviewController.TogglePreviewLock();
+    }
 }
