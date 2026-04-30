@@ -39,7 +39,7 @@ internal static class RemoteHandPreviewController
         }
         catch (Exception ex)
         {
-            ModLogger.Warn($"{VersionInfo.Tag} Failed to update remote hand preview: {ex}");
+            ModLogger.Warn($"{VersionInfo.Tag} 更新远程手牌预览显示状态失败：{ex}");
             Hide(playerState);
         }
     }
@@ -53,7 +53,7 @@ internal static class RemoteHandPreviewController
         }
         catch (Exception ex)
         {
-            ModLogger.Warn($"{VersionInfo.Tag} Failed to refresh remote hand preview: {ex}");
+            ModLogger.Warn($"{VersionInfo.Tag} 刷新远程手牌预览失败：{ex}");
             Hide(playerState);
         }
     }
@@ -73,7 +73,7 @@ internal static class RemoteHandPreviewController
                 if (LockedNetId == hoveredNetId)
                 {
                     LockedNetId = null;
-                    ModLogger.Info($"{VersionInfo.Tag} Remote hand preview unlocked.");
+                    ModLogger.Info($"{VersionInfo.Tag} 已解除锁定其他玩家手牌预览。");
                     return;
                 }
 
@@ -81,7 +81,7 @@ internal static class RemoteHandPreviewController
                     Hide(previouslyLockedNetId);
 
                 LockedNetId = hoveredNetId;
-                ModLogger.Info($"{VersionInfo.Tag} Remote hand preview locked.");
+                ModLogger.Info($"{VersionInfo.Tag} 已锁定其他玩家手牌预览。");
                 return;
             }
 
@@ -89,7 +89,7 @@ internal static class RemoteHandPreviewController
         }
         catch (Exception ex)
         {
-            ModLogger.Warn($"{VersionInfo.Tag} Failed to toggle remote hand preview lock: {ex}");
+            ModLogger.Warn($"{VersionInfo.Tag} 切换远程手牌预览锁定状态失败：{ex}");
             UnlockCurrentPreview(hideLockedPreview: true);
         }
     }
@@ -245,6 +245,7 @@ internal static class RemoteHandPreviewController
         if (playerState.Player is null)
             return;
 
+        // 锁定状态下允许预览在焦点离开后继续停留。
         ulong netId = playerState.Player.NetId;
         if (LockedNetId == netId)
             return;
@@ -284,6 +285,6 @@ internal static class RemoteHandPreviewController
         if (hideLockedPreview)
             Hide(lockedNetId);
 
-        ModLogger.Info($"{VersionInfo.Tag} Remote hand preview unlocked.");
+        ModLogger.Info($"{VersionInfo.Tag} 已解除锁定其他玩家手牌预览。");
     }
 }

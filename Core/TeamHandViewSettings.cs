@@ -7,6 +7,7 @@ namespace TeamHandView.Core;
 public static class TeamHandViewSettings
 {
     private const string PreviewGroup = "preview";
+    private const string DefaultLockControllerInput = "controller_joystick_press";
 
     [UIToggle]
     [Config(
@@ -42,6 +43,8 @@ public static class TeamHandViewSettings
         Description = "Lock or unlock the currently hovered remote hand preview.",
         DefaultKeyboard = Key.H,
         DefaultModifiers = JmcKeyModifiers.Ctrl,
+        // JML 的 UIHotkey 保存 Godot InputMap 名称，这里对应左摇杆按下。
+        DefaultController = DefaultLockControllerInput,
         AllowController = true,
         ConsumeInput = true,
         Order = 40)]

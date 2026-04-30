@@ -1,11 +1,11 @@
 {
     "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.GROUP.preview": "手牌预览",
     "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.enabled.NAME": "启用手牌预览",
-    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.enabled.DESCRIPTION": "鼠标悬停其他玩家状态栏时，显示其当前手牌。",
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.enabled.DESCRIPTION": "鼠标悬停或手柄选中其他玩家时，显示其当前手牌。",
     "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.NAME": "卡牌缩放",
     "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.card_scale.DESCRIPTION": "控制悬停预览里卡牌的显示大小。",
     "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.NAME": "每行最大卡牌数",
     "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.max_columns.DESCRIPTION": "控制悬停预览自动换行前每行最多显示几张卡。",
     "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.NAME": "锁定/解锁手牌预览",
-    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.DESCRIPTION": "锁定当前悬停显示的其他玩家手牌预览，或解除锁定。"
+    "EXTENSION.JMCMODLIB.CONFIG.TeamHandView.toggle_preview_lock.DESCRIPTION": "锁定当前悬停显示的其他玩家手牌预览，或解除锁定。默认键盘为 Ctrl+H，默认手柄为左摇杆按下。"
 }
