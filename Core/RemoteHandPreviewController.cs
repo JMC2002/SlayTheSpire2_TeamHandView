@@ -18,6 +18,8 @@ internal static class RemoteHandPreviewController
     private const float CardSpacing = 18f;
     private const float EdgePadding = 24f;
     private const float TargetGap = 18f;
+    private const float ReferenceViewportWidth = 1920f;
+    private const float ReferenceViewportHeight = 1080f;
     // 不主动抬高 ZIndex：原生 CardPreviewContainer 会在暂停菜单等界面打开时被移动到暗幕下方。
     private const int PreviewZIndex = 0;
 
@@ -91,6 +93,7 @@ internal static class RemoteHandPreviewController
                     HidePreview(previouslyLockedNetId);
 
                 LockedNetId = hoveredNetId;
+                FreezeCurrentPreviewAnchor(hoveredNetId);
                 ModLogger.Info($"{VersionInfo.Tag} 已锁定其他玩家手牌预览。");
                 return;
             }
@@ -122,7 +125,7 @@ internal static class RemoteHandPreviewController
 
     public static void RestoreAfterBlockingUi(string reason)
     {
-        if (Previews.Count == 0 || IsPreviewBlockedByGameUi())
+        if (Previews.Count == 0 || !TeamHandViewSettings.Enabled || IsPreviewBlockedByGameUi())
             return;
 
         bool restoredAny = false;
@@ -130,6 +133,7 @@ internal static class RemoteHandPreviewController
         {
             if (GodotObject.IsInstanceValid(preview.Root) && !preview.Root.Visible)
             {
+                ApplyConfiguredPositionOffset(preview);
                 preview.Root.Visible = true;
                 restoredAny = true;
             }
@@ -137,6 +141,68 @@ internal static class RemoteHandPreviewController
 
         if (restoredAny)
             ModLogger.Debug($"{VersionInfo.Tag} 已恢复远程手牌预览：{reason}");
+    }
+
+    public static void ApplyEnabledSetting(bool enabled, string reason)
+    {
+        try
+        {
+            if (enabled)
+            {
+                RefreshLockedPreview(reason);
+                return;
+            }
+
+            HidePreviewRoots(reason);
+        }
+        catch (Exception ex)
+        {
+            ModLogger.Warn($"{VersionInfo.Tag} 应用远程手牌预览启用设置失败（{reason}）：{ex}");
+        }
+    }
+
+    public static void RefreshLockedPreview(string reason)
+    {
+        try
+        {
+            if (LockedNetId is not { } lockedNetId || !TeamHandViewSettings.Enabled)
+                return;
+
+            if (!Previews.TryGetValue(lockedNetId, out PreviewState? preview))
+                return;
+
+            NMultiplayerPlayerState? playerState = preview.PlayerState;
+            if (playerState is null || !GodotObject.IsInstanceValid(playerState))
+            {
+                HidePreview(lockedNetId);
+                return;
+            }
+
+            ShowOrRefresh(playerState);
+        }
+        catch (Exception ex)
+        {
+            ModLogger.Warn($"{VersionInfo.Tag} 刷新锁定的远程手牌预览失败（{reason}）：{ex}");
+        }
+    }
+
+    public static void RefreshLockedPreviewPosition(string reason)
+    {
+        try
+        {
+            if (LockedNetId is not { } lockedNetId || !TeamHandViewSettings.Enabled)
+                return;
+
+            if (!Previews.TryGetValue(lockedNetId, out PreviewState? preview))
+                return;
+
+            if (GodotObject.IsInstanceValid(preview.Root))
+                ApplyConfiguredPositionOffset(preview);
+        }
+        catch (Exception ex)
+        {
+            ModLogger.Warn($"{VersionInfo.Tag} 刷新锁定的远程手牌预览位置失败（{reason}）：{ex}");
+        }
     }
 
     public static void ClearRunPreviewState(string reason)
@@ -188,6 +254,7 @@ internal static class RemoteHandPreviewController
 
         ulong netId = playerState.Player.NetId;
         PreviewState preview = GetOrCreatePreview(parent, netId);
+        preview.PlayerState = playerState;
 
         float scale = Mathf.Clamp(TeamHandViewSettings.CardScale, 0.25f, 0.65f);
         int columns = Mathf.Clamp(TeamHandViewSettings.MaxColumns, 1, Math.Max(1, cards.Count));
@@ -200,7 +267,7 @@ internal static class RemoteHandPreviewController
         preview.Root.ZIndex = PreviewZIndex;
 
         SyncCards(preview, cards, columns, scale, cardSize, forceVisualRefresh: true);
-        PositionPreview(playerState, preview.Root, previewSize);
+        PositionPreview(playerState, preview, previewSize);
     }
 
     private static bool CanPreview(NMultiplayerPlayerState playerState, out IReadOnlyList<CardModel> cards)
@@ -379,35 +446,78 @@ internal static class RemoteHandPreviewController
             rows * cardSize.Y + Math.Max(0, rows - 1) * CardSpacing);
     }
 
-    private static void PositionPreview(NMultiplayerPlayerState playerState, Control root, Vector2 previewSize)
+    private static void PositionPreview(NMultiplayerPlayerState playerState, PreviewState preview, Vector2 previewSize)
     {
         Vector2 viewportSize = playerState.GetViewport().GetVisibleRect().Size;
+        preview.PreviewSize = previewSize;
+        preview.ViewportSize = viewportSize;
+
+        if (playerState.Player is not null
+            && LockedNetId == playerState.Player.NetId
+            && preview.HasPositionAnchor)
+        {
+            ApplyConfiguredPositionOffset(preview);
+            return;
+        }
+
         Vector2 targetPosition = playerState.GlobalPosition;
         Vector2 targetSize = playerState.Size;
-
-        Vector2 position = new(targetPosition.X + targetSize.X + TargetGap, targetPosition.Y);
-        if (position.X + previewSize.X > viewportSize.X - EdgePadding)
-            position.X = targetPosition.X - previewSize.X - TargetGap;
+        float rightEdge = targetPosition.X + targetSize.X + TargetGap + previewSize.X;
+        Vector2 position = rightEdge > viewportSize.X - EdgePadding
+            ? new Vector2(targetPosition.X - previewSize.X - TargetGap, targetPosition.Y)
+            : new Vector2(targetPosition.X + targetSize.X + TargetGap, targetPosition.Y);
 
         position.Y = targetPosition.Y - Math.Max(0f, (previewSize.Y - targetSize.Y) * 0.5f);
-        position += GetConfiguredPositionOffset();
-        position.X = Mathf.Clamp(position.X, EdgePadding, Math.Max(EdgePadding, viewportSize.X - previewSize.X - EdgePadding));
-        position.Y = Mathf.Clamp(position.Y, EdgePadding, Math.Max(EdgePadding, viewportSize.Y - previewSize.Y - EdgePadding));
+        preview.BasePosition = position;
+        preview.HasPositionAnchor = true;
 
-        root.GlobalPosition = position;
+        ApplyConfiguredPositionOffset(preview);
     }
 
-    private static Vector2 GetConfiguredPositionOffset()
+    private static void ApplyConfiguredPositionOffset(PreviewState preview)
     {
+        if (!preview.HasPositionAnchor || !GodotObject.IsInstanceValid(preview.Root))
+            return;
+
+        Vector2 position = preview.BasePosition + GetConfiguredPositionOffset(preview.ViewportSize);
+        position.X = Mathf.Clamp(
+            position.X,
+            EdgePadding,
+            Math.Max(EdgePadding, preview.ViewportSize.X - preview.PreviewSize.X - EdgePadding));
+        position.Y = Mathf.Clamp(
+            position.Y,
+            EdgePadding,
+            Math.Max(EdgePadding, preview.ViewportSize.Y - preview.PreviewSize.Y - EdgePadding));
+
+        preview.Root.GlobalPosition = position;
+    }
+
+    private static void FreezeCurrentPreviewAnchor(ulong netId)
+    {
+        if (!Previews.TryGetValue(netId, out PreviewState? preview) || !GodotObject.IsInstanceValid(preview.Root))
+            return;
+
+        preview.PreviewSize = preview.Root.Size;
+        preview.ViewportSize = preview.Root.GetViewport().GetVisibleRect().Size;
+        preview.BasePosition = preview.Root.GlobalPosition - GetConfiguredPositionOffset(preview.ViewportSize);
+        preview.HasPositionAnchor = true;
+    }
+
+    private static Vector2 GetConfiguredPositionOffset(Vector2 viewportSize)
+    {
+        Vector2 viewportScale = new(
+            viewportSize.X > 0f ? viewportSize.X / ReferenceViewportWidth : 1f,
+            viewportSize.Y > 0f ? viewportSize.Y / ReferenceViewportHeight : 1f);
+
         return new Vector2(
             Mathf.Clamp(
                 TeamHandViewSettings.PositionOffsetX,
                 TeamHandViewSettings.MinPositionOffset,
-                TeamHandViewSettings.MaxPositionOffset),
+                TeamHandViewSettings.MaxPositionOffset) * viewportScale.X,
             Mathf.Clamp(
                 TeamHandViewSettings.PositionOffsetY,
                 TeamHandViewSettings.MinPositionOffset,
-                TeamHandViewSettings.MaxPositionOffset));
+                TeamHandViewSettings.MaxPositionOffset) * viewportScale.Y);
     }
 
     private static bool IsPreviewBlockedByGameUi()
@@ -485,7 +595,12 @@ internal static class RemoteHandPreviewController
     private sealed class PreviewState(Control root)
     {
         public Control Root { get; } = root;
+        public NMultiplayerPlayerState? PlayerState { get; set; }
         public List<NCard> CardNodes { get; } = [];
+        public Vector2 BasePosition { get; set; }
+        public Vector2 PreviewSize { get; set; }
+        public Vector2 ViewportSize { get; set; }
+        public bool HasPositionAnchor { get; set; }
         public int Columns { get; set; } = -1;
         public float Scale { get; set; } = -1f;
     }

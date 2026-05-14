@@ -12,10 +12,7 @@ public partial class MainFile : Node
 {
     public static void Initialize()
     {
-        JmcModLib.Core.ModBootstrap.Init<MainFile>()
-            .RegisterLogger()
-            .UseConfig()
-            .Done();
+        JmcModLib.Core.ModRegistry.Register<MainFile>();
 
         ModLogger.Info("======================================");
         ModLogger.Info($" {VersionInfo.Name} Mod 正在启动...");

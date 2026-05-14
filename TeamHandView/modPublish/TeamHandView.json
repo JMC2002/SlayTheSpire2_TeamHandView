@@ -2,7 +2,7 @@
   "id": "TeamHandView",
   "name": "TeamHandView",
   "author": "JMC",
-  "version": "1.0.13",
+  "version": "1.0.24",
   "description": "联机时悬停其他玩家状态栏可查看其当前手牌；有问题反馈B站JMC丶或者Github，二次分发请注明来源",
   "has_pck": true,
   "has_dll": true,
