@@ -53,8 +53,10 @@ Steam版本直接在创意工坊订阅即可（暂未开放）
 [Github仓库](https://github.com/JMC2002/SlayTheSpire2_TeamHandView)
 ## ⚙️ 2. 功能
 - 联机时悬停其他玩家状态栏可查看其当前手牌
+![](./pic/效果.png)
 - 支持在模组设置中调整卡牌缩放、每行最大卡牌数和锁定/解锁热键
- 
+![](./pic/设置.png) 
+
 ## 🔔 3. 提醒
 - **本模组强依赖于模组[JmcModLib](https://github.com/JMC2002/JmcModLib_STS2/releases)**
 - 手牌预览配置由 JmcModLib 提供，修改后会保存到本地配置文件。
@@ -67,6 +69,3 @@ Steam版本直接在创意工坊订阅即可（暂未开放）
 
 **如果你喜欢这个 Mod 的话，希望可以点一个star~**
 
-如果你真的很有钱，可以考虑给我赞助，给我赞助你得不到任何东西，但是可以吓我一跳。
-
-![图片描述](pic/wechat_qrcode.png)
